@@ -10,6 +10,9 @@
     "Programming Languages"
   ],
   "main": "./client/out/extension.js",
+  "activationEvents": [
+    "onLanguage:hapet"
+  ],
   "contributes": {
     "languages": [
       {
@@ -35,12 +38,9 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "npm run compile:client && npm run compile:server",
+    "compile": "npm run compile:client",
     "compile:client": "tsc -b client/tsconfig.json",
-    "compile:server": "tsc -b server/tsconfig.json",
-    "watch": "npm run watch:client && npm run watch:server",
     "watch:client": "tsc -b client/tsconfig.json -w",
-    "watch:server": "tsc -b server/tsconfig.json -w",
     "package": "vsce package"
   },
   "devDependencies": {

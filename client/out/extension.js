@@ -41,11 +41,11 @@ let client;
 function activate(context) {
     const serverModule = context.asAbsolutePath(path.join('server', 'out', 'server.js'));
     const serverOptions = {
-        run: { module: serverModule, transport: node_1.TransportKind.ipc },
-        debug: { module: serverModule, transport: node_1.TransportKind.ipc }
+        run: { command: 'hapet.exe', args: ['lsp'] },
+        debug: { command: 'hapet.exe', args: ['lsp'] }
     };
     const clientOptions = {
-        documentSelector: [{ scheme: 'file', language: 'hpt' }],
+        documentSelector: [{ scheme: 'file', language: 'hapet' }],
     };
     client = new node_1.LanguageClient('hptLanguageServer', 'HPT Language Server', serverOptions, clientOptions);
     client.start();

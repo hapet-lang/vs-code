@@ -8,15 +8,15 @@ export function activate(context: ExtensionContext) {
     const serverModule = context.asAbsolutePath(path.join('server', 'out', 'server.js'));
     
     const serverOptions: ServerOptions = {
-        run: { module: serverModule, transport: TransportKind.ipc },
-        debug: { module: serverModule, transport: TransportKind.ipc }
+        run: { command: 'hapet.exe',  args: ['lsp'] },
+        debug: { command: 'hapet.exe', args: ['lsp'] }
     };
     
     const clientOptions: LanguageClientOptions = {
-        documentSelector: [{ scheme: 'file', language: 'hpt' }],
+        documentSelector: [{ scheme: 'file', language: 'hapet' }],
     };
     
-    client = new LanguageClient('hptLanguageServer', 'HPT Language Server', serverOptions, clientOptions);
+    client = new LanguageClient('hapetLanguageServer', 'HAPET Language Server', serverOptions, clientOptions);
     client.start();
 }
 
