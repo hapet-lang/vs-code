@@ -9,17 +9,47 @@
   "categories": [
     "Programming Languages"
   ],
+  "main": "./client/out/extension.js",
   "contributes": {
-    "languages": [{
-      "id": "hapet",
-      "aliases": ["Hapet", "hapet"],
-      "extensions": [".hpt"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "hapet",
-      "scopeName": "source.hpt",
-      "path": "./syntaxes/hapet.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "hapet",
+        "aliases": [
+          "Hapet",
+          "hapet"
+        ],
+        "extensions": [
+          ".hpt"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hapet",
+        "scopeName": "source.hpt",
+        "path": "./syntaxes/hapet.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "npm run compile:client && npm run compile:server",
+    "compile:client": "tsc -b client/tsconfig.json",
+    "compile:server": "tsc -b server/tsconfig.json",
+    "watch": "npm run watch:client && npm run watch:server",
+    "watch:client": "tsc -b client/tsconfig.json -w",
+    "watch:server": "tsc -b server/tsconfig.json -w",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.17",
+    "@types/vscode": "^1.104.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.8"
   }
 }
