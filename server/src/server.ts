@@ -7,8 +7,7 @@ const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 connection.onInitialize(() => {
     return {
         capabilities: {
-            textDocumentSync: TextDocumentSyncKind.Incremental, // ← ИСПРАВЛЕННАЯ СТРОКА
-            // Добавьте другие возможности по мере необходимости
+            textDocumentSync: TextDocumentSyncKind.Incremental, 
             completionProvider: {
                 resolveProvider: true
             },
@@ -22,15 +21,12 @@ connection.onInitialized(() => {
     console.log('Hapet Language Server is initialized');
 });
 
-// Обработчик изменений документа
 documents.onDidChangeContent(change => {
     const text = change.document.getText();
     console.log(`Document changed: ${change.document.uri}`);
     
     // Здесь будет ваша логика анализа Hapet кода
-    // Например, проверка синтаксиса, сбор информации и т.д.
 });
 
-// Запуск сервера
 documents.listen(connection);
 connection.listen();

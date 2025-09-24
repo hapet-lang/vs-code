@@ -19,7 +19,8 @@
           "hapet"
         ],
         "extensions": [
-          ".hpt"
+          ".hpt",
+          ".hptproj"
         ],
         "configuration": "./language-configuration.json"
       }
