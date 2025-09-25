@@ -45,6 +45,16 @@
         "id": "param",
         "description": "Xml tag param",
         "superType": "xml"
+      },
+      {
+        "id": "comment",
+        "description": "Xml comment",
+        "superType": "xml"
+      },
+      {
+        "id": "bracket",
+        "description": "Xml bracket",
+        "superType": "xml"
       }
     ],
     "semanticTokenModifiers": [
@@ -57,7 +67,9 @@
       "editor.semanticHighlighting.enabled": true,
       "editor.semanticTokenColorCustomizations": {
         "rules": {
-          "tag.default": "#3d8dd6"
+          "tag.default": "#3d8dd6",
+          "comment.default": "#449849",
+          "bracket.default": "#777777"
         }
       }
     }
