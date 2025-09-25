@@ -11,3 +11,5 @@ logs
 node_modules
 temp
 src/generated
+
+client/out

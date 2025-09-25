@@ -34,7 +34,33 @@
         "scopeName": "source.hpt",
         "path": "./syntaxes/hapet.tmLanguage.json"
       }
-    ]
+    ],
+    "semanticTokenTypes": [
+      {
+        "id": "tag",
+        "description": "Xml tag",
+        "superType": "xml"
+      },
+      {
+        "id": "param",
+        "description": "Xml tag param",
+        "superType": "xml"
+      }
+    ],
+    "semanticTokenModifiers": [
+      {
+        "id": "default",
+        "description": "Default modifier"
+      }
+    ],
+    "configurationDefaults": {
+      "editor.semanticHighlighting.enabled": true,
+      "editor.semanticTokenColorCustomizations": {
+        "rules": {
+          "tag.default": "#3d8dd6"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -46,11 +72,13 @@
   "devDependencies": {
     "@types/node": "^20.19.17",
     "@types/vscode": "^1.104.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.9.2"
   },
   "dependencies": {
+    "generator-code": "^1.11.12",
     "vscode-languageclient": "^9.0.1",
     "vscode-languageserver": "^9.0.1",
-    "vscode-languageserver-textdocument": "^1.0.8"
+    "vscode-languageserver-textdocument": "^1.0.8",
+    "yo": "^5.1.0"
   }
 }
