@@ -72,6 +72,31 @@
         "id": "special_key",
         "description": "Special key",
         "superType": "cs"
+      },
+      {
+        "id": "interface",
+        "description": "Interface",
+        "superType": "cs"
+      },
+      {
+        "id": "struct",
+        "description": "Struct",
+        "superType": "cs"
+      },
+      {
+        "id": "func",
+        "description": "Function",
+        "superType": "cs"
+      },
+      {
+        "id": "var",
+        "description": "Variable name",
+        "superType": "cs"
+      },
+      {
+        "id": "purple",
+        "description": "Special lang word",
+        "superType": "cs"
       }
     ],
     "semanticTokenModifiers": [
@@ -97,6 +122,12 @@
           "bracket.default": "#777777",
 
           "using.static": "#3d8dd6",
+          "class.static": "#4ec9b0",
+          "struct.static": "#7fc590",
+          "interface.static": "#b8d7a3",
+          "func.static": "#dcdca5",
+          "var.static": "#9cdcfe",
+          "purple.static": "#d8a0df",
           "special_key.static": "#3d8dd6"
         }
       }
