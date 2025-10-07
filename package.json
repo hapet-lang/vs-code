@@ -55,12 +55,37 @@
         "id": "bracket",
         "description": "Xml bracket",
         "superType": "xml"
+      },
+
+
+      {
+        "id": "class",
+        "description": "Class",
+        "superType": "cs"
+      },
+      {
+        "id": "using",
+        "description": "Using",
+        "superType": "cs"
+      },
+      {
+        "id": "special_key",
+        "description": "Special key",
+        "superType": "cs"
       }
     ],
     "semanticTokenModifiers": [
       {
         "id": "default",
         "description": "Default modifier"
+      },
+      {
+        "id": "static",
+        "description": "Static modifier"
+      },
+      {
+        "id": "declaration",
+        "description": "Declaration modifier"
       }
     ],
     "configurationDefaults": {
@@ -69,7 +94,10 @@
         "rules": {
           "tag.default": "#3d8dd6",
           "comment.default": "#449849",
-          "bracket.default": "#777777"
+          "bracket.default": "#777777",
+
+          "using.static": "#3d8dd6",
+          "special_key.static": "#3d8dd6"
         }
       }
     }
