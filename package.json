@@ -94,6 +94,11 @@
         "superType": "cs"
       },
       {
+        "id": "enum",
+        "description": "Enum",
+        "superType": "cs"
+      },
+      {
         "id": "purple",
         "description": "Special lang word",
         "superType": "cs"
@@ -126,6 +131,7 @@
           "struct.static": "#7fc590",
           "interface.static": "#b8d7a3",
           "func.static": "#dcdca5",
+          "enum.static": "#b8d7a3",
           "var.static": "#9cdcfe",
           "purple.static": "#d8a0df",
           "special_key.static": "#3d8dd6"
