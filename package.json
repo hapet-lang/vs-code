@@ -102,6 +102,26 @@
         "id": "purple",
         "description": "Special lang word",
         "superType": "cs"
+      },
+      {
+        "id": "number",
+        "description": "Number",
+        "superType": "cs"
+      },
+      {
+        "id": "string",
+        "description": "String",
+        "superType": "cs"
+      },
+      {
+        "id": "char",
+        "description": "Char",
+        "superType": "cs"
+      },
+      {
+        "id": "comment",
+        "description": "Comment",
+        "superType": "cs"
       }
     ],
     "semanticTokenModifiers": [
@@ -134,7 +154,11 @@
           "enum.static": "#b8d7a3",
           "var.static": "#9cdcfe",
           "purple.static": "#d8a0df",
-          "special_key.static": "#3d8dd6"
+          "special_key.static": "#3d8dd6",
+          "number.static": "#b5cea8",
+          "string.static": "#d69d85",
+          "char.static": "#ddc256",
+          "comment.static": "#57a64a"
         }
       }
     }
