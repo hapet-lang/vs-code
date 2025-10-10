@@ -3,19 +3,10 @@
 	"name": "Hapet",
 	"patterns": [
 		{
-			"include": "#keywords"
-		},
-		{
 			"include": "#strings"
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.hapet",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
 		"strings": {
 			"name": "string.quoted.double.hapet",
 			"begin": "\"",

@@ -122,6 +122,16 @@
         "id": "comment",
         "description": "Comment",
         "superType": "cs"
+      },
+      {
+        "id": "not_compiled",
+        "description": "Not compiled",
+        "superType": "cs"
+      },
+      {
+        "id": "directive",
+        "description": "Directive",
+        "superType": "cs"
       }
     ],
     "semanticTokenModifiers": [
@@ -158,7 +168,9 @@
           "number.static": "#b5cea8",
           "string.static": "#d69d85",
           "char.static": "#ddc256",
-          "comment.static": "#57a64a"
+          "comment.static": "#57a64a",
+          "not_compiled.static": "#9b9b9b",
+          "directive.static": "#9b9b9b"
         }
       }
     }
