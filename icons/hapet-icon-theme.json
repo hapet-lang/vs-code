@@ -5,10 +5,14 @@
     },
     "_icon_hptproj": {
       "iconPath": "./logo.svg"
+    },
+    "_icon_default": {
+      "iconPath": "./symbol-keyword.svg"
     }
   },
   "fileExtensions": {
     "hpt": "_icon_hpt",
     "hptproj": "_icon_hptproj"
-  }
+  },
+  "file": "_icon_default"
 }
