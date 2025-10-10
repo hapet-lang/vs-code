@@ -1,0 +1,14 @@
+{
+  "iconDefinitions": {
+    "_icon_hpt": {
+      "iconPath": "./letter2.svg"
+    },
+    "_icon_hptproj": {
+      "iconPath": "./logo.svg"
+    }
+  },
+  "fileExtensions": {
+    "hpt": "_icon_hpt",
+    "hptproj": "_icon_hptproj"
+  }
+}

@@ -28,6 +28,13 @@
         "configuration": "./language-configuration.json"
       }
     ],
+    "iconThemes": [
+      {
+        "id": "hapet-icon-theme",
+        "label": "Hapet Icons",
+        "path": "./icons/hapet-icon-theme.json"
+      }
+    ],
     "grammars": [
       {
         "language": "hapet",
