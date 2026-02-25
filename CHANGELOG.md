@@ -1,9 +1,7 @@
 # Change Log
 
-All notable changes to the "hapetvscode" extension will be documented in this file.
+All notable changes to the "hapet-vscode" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## Version 0.0.1: February 25. 2026  
 
-## [Unreleased]
-
-- Initial release
+### Initial release

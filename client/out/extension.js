@@ -36,18 +36,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.activate = activate;
 exports.deactivate = deactivate;
 const path = __importStar(require("path"));
+const fs = __importStar(require("fs"));
+const vscode_1 = require("vscode");
 const node_1 = require("vscode-languageclient/node");
 let client;
 function activate(context) {
-    const serverModule = context.asAbsolutePath(path.join('server', 'out', 'server.js'));
+    const folders = vscode_1.workspace.workspaceFolders;
+    if (!folders || folders.length === 0) {
+        vscode_1.window.showErrorMessage('Open project folder to use HAPET LSP.');
+        return;
+    }
+    const rootPath = folders[0].uri.fsPath;
+    const filesInRoot = fs.readdirSync(rootPath);
+    const projectFile = filesInRoot.find(f => f.endsWith('.hptproj'));
+    if (!projectFile) {
+        vscode_1.window.showErrorMessage('Project file .hptproj could not be found in workspace.');
+        return;
+    }
+    const projectFilePath = path.join(rootPath, projectFile);
     const serverOptions = {
-        run: { command: 'hapet.exe', args: ['lsp'] },
-        debug: { command: 'hapet.exe', args: ['lsp'] }
+        command: 'hapet',
+        args: ['lsp', projectFilePath],
+        options: {
+            shell: true,
+            env: process.env
+        }
     };
     const clientOptions = {
         documentSelector: [{ scheme: 'file', language: 'hapet' }],
     };
-    client = new node_1.LanguageClient('hptLanguageServer', 'HPT Language Server', serverOptions, clientOptions);
+    client = new node_1.LanguageClient('hapetLanguageServer', 'HAPET Language Server', serverOptions, clientOptions);
     client.start();
 }
 function deactivate() {

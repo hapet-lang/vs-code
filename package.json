@@ -1,8 +1,10 @@
 {
-  "name": "hapetvscode",
-  "displayName": "HapetVsCode",
+  "name": "hapet-vscode",
+  "displayName": "hapet",
   "description": "Hapet language for Visual Studio Code",
+  "icon": "icons/logo_128.png",
   "version": "0.0.1",
+  "repository" : "https://github.com/hapet-lang",
   "engines": {
     "vscode": "^1.104.0"
   },
