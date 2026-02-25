@@ -11,6 +11,7 @@
   ],
   "main": "./client/out/extension.js",
   "activationEvents": [
+    "workspaceContains:**/*.hptproj",
     "onLanguage:hapet"
   ],
   "contributes": {
