@@ -1,0 +1,51 @@
+name: Create .vsix
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-release:
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Read version from version.txt
+        id: version
+        run: |
+          version=$(cat ./version.txt | tr -d '\n\r')
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "Version read from version.txt: $version"
+      
+      - name: Prepare release files
+        run: |
+          version="${{ steps.version.outputs.version }}"
+          mkdir -p ./release_files
+          
+          echo "Using version: $version"
+
+          sed -i "s/\"version\":.*/\"version\": \"${steps.version.outputs.version}\",/" ./staging_folder/snapcraft.yaml
+          npm run compile
+          npm install -g @vscode/vsce
+          vsce package
+          cp $(find . -type f -name "*.vsix") ./release_files/
+          
+          echo "Final release files:"
+          ls -la ./release_files/
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Release v${{ steps.version.outputs.version }}
+          draft: false
+          prerelease: false
+          files: ./release_files/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
