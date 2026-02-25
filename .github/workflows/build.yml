@@ -31,6 +31,9 @@ jobs:
           echo "Using version: $version"
 
           sed -i "s/\"version\":.*/\"version\": \"$version\",/" ./package.json
+          npm install -g typescript
+          npm install --global yo generator-code
+          npm install vscode-languageclient
           npm run compile
           npm install -g @vscode/vsce
           vsce package
