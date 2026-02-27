@@ -26,6 +26,10 @@ function createStream(): Promise<StreamInfo> {
 }
 
 export function activate(context: ExtensionContext) {
+    const outputChannel = vscode.window.createOutputChannel('hapet lsp');
+    outputChannel.show(true);
+    outputChannel.appendLine('Starting lsp...');
+
     const folders = workspace.workspaceFolders;
     if (!folders || folders.length === 0) {
         window.showErrorMessage('Open project folder to use HAPET LSP.');
@@ -40,6 +44,13 @@ export function activate(context: ExtensionContext) {
         return;
     }
     const projectFilePath = path.join(rootPath, projectFile);
+
+    try {
+        require('child_process').execSync('hapet --version', { encoding: 'utf8' });
+        outputChannel.appendLine('hapet compiler found');
+    } catch (e) {
+        outputChannel.appendLine('hapet NOT found');
+    }
 
     const serverOptions: ServerOptions = {
         command: 'hapet',
@@ -57,10 +68,13 @@ export function activate(context: ExtensionContext) {
     
     const clientOptions: LanguageClientOptions = {
         documentSelector: [{ scheme: 'file', language: 'hapet' }],
+        outputChannel: outputChannel
     };
     
     client = new LanguageClient('hapetLanguageServer', 'HAPET Language Server', serverOptions, clientOptions);
     client.start();
+
+    outputChannel.appendLine('hapet lsp started');
 }
 
 export function deactivate(): Thenable<void> | undefined {
