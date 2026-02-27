@@ -37,9 +37,25 @@ exports.activate = activate;
 exports.deactivate = deactivate;
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
+const net_1 = require("net");
 const vscode_1 = require("vscode");
 const node_1 = require("vscode-languageclient/node");
 let client;
+// for debugging via TCP
+function createStream() {
+    return new Promise((resolve, reject) => {
+        const socket = new net_1.Socket();
+        socket.on('error', (err) => {
+            reject(err);
+        });
+        socket.connect(5007, '127.0.0.1', () => {
+            resolve({
+                reader: socket,
+                writer: socket
+            });
+        });
+    });
+}
 function activate(context) {
     const folders = vscode_1.workspace.workspaceFolders;
     if (!folders || folders.length === 0) {
@@ -62,6 +78,10 @@ function activate(context) {
             env: process.env
         }
     };
+    // for debugging via TCP
+    // const serverOptions: ServerOptions = () => {
+    //     return createStream();
+    // };
     const clientOptions = {
         documentSelector: [{ scheme: 'file', language: 'hapet' }],
     };

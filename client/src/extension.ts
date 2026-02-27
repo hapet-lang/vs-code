@@ -9,6 +9,22 @@ import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind, St
 
 let client: LanguageClient;
 
+// for debugging via TCP
+function createStream(): Promise<StreamInfo> {
+  return new Promise((resolve, reject) => {
+    const socket = new Socket();
+    socket.on('error', (err) => {
+      reject(err);
+    });
+    socket.connect(5007, '127.0.0.1', () => {
+      resolve({
+        reader: socket,
+        writer: socket
+      });
+    });
+  });
+}
+
 export function activate(context: ExtensionContext) {
     const folders = workspace.workspaceFolders;
     if (!folders || folders.length === 0) {
@@ -33,6 +49,11 @@ export function activate(context: ExtensionContext) {
             env: process.env
         }
     };
+
+    // for debugging via TCP
+    // const serverOptions: ServerOptions = () => {
+    //     return createStream();
+    // };
     
     const clientOptions: LanguageClientOptions = {
         documentSelector: [{ scheme: 'file', language: 'hapet' }],
