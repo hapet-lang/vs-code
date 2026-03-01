@@ -3,14 +3,16 @@
   "displayName": "hapet",
   "description": "Hapet language for Visual Studio Code",
   "icon": "icons/logo_128.png",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "publisher": "crackanddie",
   "repository" : "https://github.com/hapet-lang",
   "engines": {
     "vscode": "^1.104.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets",
+    "Linters"
   ],
   "main": "./client/out/extension.js",
   "activationEvents": [
